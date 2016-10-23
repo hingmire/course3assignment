@@ -3,7 +3,16 @@ Source Data
 http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
 https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
 
-2. Unzip the zip file to working directory
+2. Unzip above zip file AND MAKE SURE FOLLOWING FILES ARE IN YOUR WORKING DIRECTORY
+
+activity_labels.txt
+features.txt
+X_test.txt
+y_test.txt
+subject_test.txt
+X_train.txt
+y_train.txt
+subject_train.txt
 
 3. Run script "Run_analysis.R"
 

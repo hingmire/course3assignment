@@ -8,12 +8,12 @@ library(dplyr)
 ## 2. Read common files like activity, feature
 
 ## 2A. Read activity labels
-activity_labels <- read.table("D:/Data science/Course 3/Assignment/UCI HAR Dataset/activity_labels.txt")
+activity_labels <- read.table("activity_labels.txt")
 names(activity_labels)[1] <- "activitynum"
 names(activity_labels)[2] <- "activitylabel"
 
 ## 2B. Read feature list
-features <- read.table("D:/Data science/Course 3/Assignment/UCI HAR Dataset/features.txt")
+features <- read.table("features.txt")
 names(features)[2] <- "featurename"
 
 ## 2C. Seperate feature names from feature list
@@ -25,7 +25,7 @@ featuresnames <-as.character(featuresnames)
 ## 3. Read test data, test activtity and test subjects
 
 ## 3A. Read Test readings from x-test file
-testdata <- read.table("D:/Data science/Course 3/Assignment/UCI HAR Dataset/test/X_test.txt")
+testdata <- read.table("X_test.txt")
 
 ## 3B. set column names for testdata using featurename file
 testdata <- setNames(testdata, featuresnames)
@@ -37,7 +37,7 @@ colnum <- grep("-mean\\(\\)|-std\\(\\)", colnames(testdata))
 testdata <- testdata[,colnum]
 
 ## 3E. Read activtiy numbers from "y_test" file for each of the reading in the x_test file (activity number)
-testdata_activitynum <- read.table("D:/Data science/Course 3/Assignment/UCI HAR Dataset/test/y_test.txt")
+testdata_activitynum <- read.table("y_test.txt")
 
 ## 3F. Change column header
 names(testdata_activitynum)[1] <- "activitynum"
@@ -46,7 +46,7 @@ names(testdata_activitynum)[1] <- "activitynum"
 testdata <-cbind(testdata,testdata_activitynum)
 
 ## 3H. Read subject numbers for test data
-testdata_subjects <- read.table("D:/Data science/Course 3/Assignment/UCI HAR Dataset/test/subject_test.txt")
+testdata_subjects <- read.table("subject_test.txt")
 names(testdata_subjects)[1] <- "subjectnumber"
 
 ## 3I. Add subject number to test data set
@@ -55,7 +55,7 @@ testdata <-cbind(testdata,testdata_subjects)
 ## 4. Read training data, traning activtities and traning subjects
 
 ## 4A. Read training readings from x-test file
-traindata <- read.table("D:/Data science/Course 3/Assignment/UCI HAR Dataset/train/X_train.txt")
+traindata <- read.table("X_train.txt")
 
 ## 4B. set column names for training data using featurename file
 traindata <- setNames(traindata, featuresnames)
@@ -67,7 +67,7 @@ colnum <- grep("-mean\\(\\)|-std\\(\\)", colnames(traindata))
 traindata <- traindata[,colnum]
 
 ## 4E. Read activtiy numbers from "y_train" file for each of the reading in the x_train file (activity number)
-traindata_activitynum <- read.table("D:/Data science/Course 3/Assignment/UCI HAR Dataset/train/y_train.txt")
+traindata_activitynum <- read.table("y_train.txt")
 
 ## 4F. Change column header
 names(traindata_activitynum)[1] <- "activitynum"
@@ -76,7 +76,7 @@ names(traindata_activitynum)[1] <- "activitynum"
 traindata <-cbind(traindata,traindata_activitynum)
 
 ## 4H. Read subject numbers for training data
-traindata_subjects <- read.table("D:/Data science/Course 3/Assignment/UCI HAR Dataset/train/subject_train.txt")
+traindata_subjects <- read.table("subject_train.txt")
 names(traindata_subjects)[1] <- "subjectnumber"
 
 ## 4I. Add subject number to test data set
@@ -120,5 +120,5 @@ final_data <- total_data_final %>% group_by(activity_label,subjectnumber) %>% su
 
 
 ## 10. Write final data set to a seperate file "final_data.txt"
-write.table(final_data, "D:/Data science/Course 3/Assignment/final_data.txt", sep="\t",row.names = FALSE)
+write.table(final_data, "final_data.txt", sep="\t",row.names = FALSE)
 
